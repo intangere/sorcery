@@ -68,7 +68,9 @@ SUB 35
 A_OUT
 ```
 And if we transpile the dissent code:  
-```^!_________________________________!>!_________________________________________________________*|*|*__>*__>*__>*__>*__>*__>*__>*__>*__>*_>_*>|_*>||{!```
+```
+^!_________________________________!>!_________________________________________________________*|*|*__>*__>*__>*__>*__>*__>*__>*__>*__>*_>_*>|_*>||{!
+```
 ### Problems
 
 - There is only about 60 cells available to be used for memory which means only short text programs will be successfully generated.
