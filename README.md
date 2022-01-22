@@ -1,4 +1,4 @@
-# undefinable
+# sorcery
 A code path and code generator for Dis that is esoteric in itself.  
 It outputs a code path you can follow to write the Dis program yourself.  
 Or it can output intermediate Dissent code which can be transpiled using Dissent.  

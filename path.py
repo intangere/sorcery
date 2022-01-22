@@ -362,30 +362,20 @@ def can_shift_to(val, need):
            return i+1 #Since 0 index
 
 def generate_code(ops, base_vals, reset_mem=True):
-    data_space_start = 34
-    data_space_ptr = 34
+    data_space_start = 35
+    data_space_ptr = 35
 
-    #seperate generating the memory space from generating code
+    #seperated generating the memory space from generating code
     #so that in can be optimized during code path generation
-
-    #base_vals = base_vals*2
-
-    #if reset_mem:
-    #   base = []
-    #   for val in base_vals:
-    #       base += [val]
-       #for op in ops:
-       #    if op.initial in base_vals:
-              #base_vals.append(op.initial)
-       #       base.append(op.initial)
-    #   base_vals = base
-
-    #base_vals = ['>','>','!','*','!','*','}','!','{','!','_','!','^']
-    #base_vals = [ord(val) for val in base_vals]
 
     code_start = 95
 
     program = [';data']
+
+
+    #We use 34 for 0 to shorten swapping code
+    zero_ptr = 34
+    #data_space_ptr += 1
 
     for val in base_vals:
         program.append('SET %s, %s' % (data_space_ptr, val))
@@ -398,18 +388,15 @@ def generate_code(ops, base_vals, reset_mem=True):
        print('FAILED. Data space pointer %s extends into runnable code %s. This code will not run' % (data_space_ptr, 95))
        sys.exit(1)
 
+    #here is where we would insert a jump greater than 95 if needed. unimplemented
     #   i = 95
     #   while i <= data_space_ptr:
     #     program.append('NOOP')
     #     i += 1
 
     #load a 0 for swapping
-    program.append('SUB %s' % data_space_ptr)
-    program.append('SUB %s' % data_space_ptr)
-
-    zero_ptr = data_space_ptr
-
-    data_space_ptr += 1
+    program.append('SUB %s' % 34)
+    program.append('SUB %s' % 34)
 
     #replace shift_10 with shift 0, sub, shift 0, sub
     #d and a values need to be in place for sub. this is missing
