@@ -11,7 +11,7 @@ It is only able to generate code for printing out a short string of text.
 
 ### How does it work
 
-Given an initial string of memory (the 8 operators in Dis) it uses 2 lookup tables 
+Given an initial string of memory (the 7 operators in Dis) it uses 2 lookup tables 
 to try to generate a combination of shift and subtract operators that result in
 the required memory values and then prints them out. *IF* a solution is found,
 it will shuffle the memory to try to shorten the outputted translated Dis code.
