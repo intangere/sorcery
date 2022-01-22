@@ -83,6 +83,7 @@ __>*_>_*>|_*>||{!
 
 - [ ] This needs an entire rewrite to become truly useful. It was a proof of concept to see if it was even doable.
 - [ ] Expanding the memory space to allow for longer texts to be successfully found. This isn't that hard. You just need to insert a jump instruction that goes further than the data space which is currently about 34-95 and adjust the internal data_pointer accordingly.
+- [ ] Shortening the the initial jump to around 42 instead of 95 for shorter programs thus compressing outputted code even more
 - [ ] Data space chaining needs to be redone properly which would make --optimize work significantly better. 
 - [ ] by default only output code path
 - [ ] --generate-code and --code-path to output only Dissent code generated or both
