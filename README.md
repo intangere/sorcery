@@ -4,6 +4,10 @@ It outputs a code path you can follow to write the Dis program yourself.
 Or it can output intermediate Dissent code which can be transpiled using Dissent.  
 It is only able to generate code for printing out a short string of text. 
 
+## Uses
+- You need a value in Dis and don't now how to get it
+- Generate a Dis program to print some text for you
+
 ## How does it work
 Given an initial string of memory (the 8 operators in Dis) it uses 2 lookup tables 
 to try to generate a combination of shift and subtract operators that result in
@@ -32,5 +36,7 @@ instead of expanding the data space.
 - [ ] by default only output code path
 - [ ] --generate-code and --code-path to output only Dissent code generated or both
 - [x] Move zero pointer to start of data space (34)
+- [ ] Proper command line arguments
+- [ ] Command line arg to specify input instead of modifying code
 ## Info
 - Dis is a variant of malboge 
