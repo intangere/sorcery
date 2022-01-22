@@ -5,10 +5,12 @@ Or it can output intermediate Dissent code which can be transpiled using Dissent
 It is only able to generate code for printing out a short string of text. 
 
 ## Uses
+
 - You need a value in Dis and don't now how to get it
 - Generate a Dis program to print some text for you
 
 ## How does it work
+
 Given an initial string of memory (the 8 operators in Dis) it uses 2 lookup tables 
 to try to generate a combination of shift and subtract operators that result in
 the required memory values and then prints them out. *IF* a solution is found,
@@ -18,6 +20,7 @@ The full process to get Dis code would be:
 `text input -> code path -> Dissent code -> Dis code`  
 
 ## Setup
+
 Make a copy of Dissent from https://github.com/intangere/dissent into `dissent/`
 
 Change `full_goal` in path.py to the text value you want.  
@@ -27,9 +30,11 @@ If this fails you can try `python3 path.py --optimize` which tries to reuse the 
 instead of expanding the data space.  
 
 ## Problems
+
 - There is only about 60 cells available to be used for memory which means only short text programs will be successfully generated.
 
 ## Future?
+
 - [ ] This needs an entire rewrite to become truly useful. It was a proof of concept to see if it was even doable.
 - [ ] Expanding the memory space to allow for longer texts to be successfully found. This isn't that hard. You just need to insert a jump instruction that goes further than the data space which is currently about 34-95 and adjust the internal data_pointer accordingly.
 - [ ] Data space chaining needs to be redone properly which would make --optimize work significantly better. 
@@ -39,4 +44,5 @@ instead of expanding the data space.
 - [ ] Proper command line arguments
 - [ ] Command line arg to specify input instead of modifying code
 ## Info
+
 - Dis is a variant of malboge 
