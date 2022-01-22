@@ -11,8 +11,12 @@ take the resulting values from piping to together (maybe shifted) which creates 
 then add that resulting value to the loop_values and repeat outputting an array of the order of operations required.
 """
 
+global CHAIN
+global IGNORE_NON_SWAP
+
 DEBUG = False
 CHAIN = False
+IGNORE_NON_SWAP = False
 
 with open('tables/pipe_table.json', 'r') as f:
      pipe_table = loads(''.join(f.readlines()))
@@ -179,7 +183,9 @@ def find_cycle(goal, loop_vals):
                      #continue #ignore all this
                      if subtract(val, shifted) == need:
                        if need == vals[1][1]:
-
+                          if IGNORE_NON_SWAP:
+                             continue
+                          #continue disabling this path may lead to shorter code
                           op_path.append(vals[2])
                           print('FOUND! 1')
 
@@ -265,7 +271,9 @@ def find_cycle(goal, loop_vals):
                      elif subtract(shifted, val) == need:
                        #continue
                        if need == vals[1][1]:
-
+                          if IGNORE_NON_SWAP:
+                             continue
+                          #continue disabling this path may lead to shorter code
                           op_path.append(vals[2])
                           print('FOUND! 2')
 
@@ -456,11 +464,14 @@ if __name__ == '__main__':
    loop_vals = [ord(val) for val in loop_vals]
    base_loop_vals = loop_vals[:]
 
-   full_goal = 'h'
+   full_goal = 'Hello, world!'
    full_goal = [ord(c) for c in full_goal]
 
    if '--optimize' in sys.argv:
       CHAIN = True
+
+   if '--use-swap-only' in sys.argv:
+      IGNORE_NON_SWAP = True
 
    #Order of operations required to reach result
    op_path = []

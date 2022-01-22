@@ -29,6 +29,8 @@ Run `python3 path.py`.
 If this fails you can try `python3 path.py --optimize` which tries to reuse the data space  
 instead of expanding the data space.  
 
+If you want even shorter code you can try: `python3 path.py --use-swap-only` which avoids certain code paths that typically lead to longer code.
+
 ### Example
 Let's say we want to print out `h` so we set `full_goal ='h'` and run `path.py`.  
 Output code path:
@@ -76,7 +78,7 @@ __>*_>_*>|_*>||{!
 ### Problems
 
 - There is only about 60 cells available to be used for memory which means only short text programs will be successfully generated.
-
+- `--optimize` works less than half the time. I recommend avoiding the feature until further notice.
 ### Future?
 
 - [ ] This needs an entire rewrite to become truly useful. It was a proof of concept to see if it was even doable.
