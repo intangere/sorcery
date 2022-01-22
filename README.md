@@ -29,6 +29,46 @@ Run `python3 path.py`.
 If this fails you can try `python3 path.py --optimize` which tries to reuse the data space  
 instead of expanding the data space.  
 
+### Example
+Let's say we want to print out `h` so we set `full_goal ='h'` and run `path.py`.  
+Output code path:
+`
+Starting values [42, 62, 95, 33, 123, 125, 94, 124]
+62->186 via 9 > ops. Memory space must contain: 62
+33->11 via 1 > ops. Memory space must contain: 33
+11->0 via 0 LOAD ops. Memory space must contain: 11
+['a=', 11, 'd=', 186]->104 via 1 | ops. Memory space must contain: ['a=', 11, 'd=', 186]
+104->STDOUT via 1 { ops. Memory space must contain: 104
+`  
+Output dissent code:  
+`
+;data
+SET 35, 62
+SET 36, 33
+JUMP
+IS_C 95
+SUB 34
+SUB 34
+;runnable code
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 35
+SHIFT 36
+SHIFT 34
+SUB 36
+SHIFT 34
+SUB 36
+SUB 35
+A_OUT
+`  
+And if we transpile the dissent code:  
+`^!_________________________________!>!_________________________________________________________*|*|*__>*__>*__>*__>*__>*__>*__>*__>*__>*_>_*>|_*>||{!`
 ### Problems
 
 - There is only about 60 cells available to be used for memory which means only short text programs will be successfully generated.

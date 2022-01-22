@@ -456,7 +456,7 @@ if __name__ == '__main__':
    loop_vals = [ord(val) for val in loop_vals]
    base_loop_vals = loop_vals[:]
 
-   full_goal = 'Hello, world!'
+   full_goal = 'h'
    full_goal = [ord(c) for c in full_goal]
 
    if '--optimize' in sys.argv:
